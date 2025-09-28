@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors - Health Management System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="doctors-body">
+    <!-- Background Animation -->
+    <div class="background-animation">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="page-header">
+        <div class="header-content">
+            <button class="back-button" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1><i class="fas fa-user-md"></i> Doctors</h1>
+            <div class="header-actions">
+                <button class="home-button" onclick="goHome()">
+                    <i class="fas fa-home"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search and Filter Section -->
+    <div class="search-section">
+        <div class="search-container">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="doctorSearch" placeholder="Search doctors by name or specialty...">
+            </div>
+            <div class="specialty-filters">
+                <button class="specialty-btn active" data-specialty="all">All Specialties</button>
+                <button class="specialty-btn" data-specialty="cardiology">Cardiology</button>
+                <button class="specialty-btn" data-specialty="neurology">Neurology</button>
+                <button class="specialty-btn" data-specialty="orthopedics">Orthopedics</button>
+                <button class="specialty-btn" data-specialty="ent">ENT</button>
+                <button class="specialty-btn" data-specialty="oncology">Oncology</button>
+                <button class="specialty-btn" data-specialty="dermatology">Dermatology</button>
+                <button class="specialty-btn" data-specialty="pediatrics">Pediatrics</button>
+                <button class="specialty-btn" data-specialty="psychiatry">Psychiatry</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Doctors Grid -->
+    <div class="doctors-container">
+        <div class="doctors-grid" id="doctorsGrid">
+            <!-- Doctors will be loaded dynamically -->
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+        <p>Loading doctors...</p>
+    </div>
+
+    <!-- No Results Message -->
+    <div class="no-results" id="noResults" style="display: none;">
+        <i class="fas fa-search"></i>
+        <h3>No doctors found</h3>
+        <p>Try adjusting your search criteria or specialty filter.</p>
+    </div>
+
+    <!-- Doctor Detail Modal -->
+    <div id="doctorModal" class="modal">
+        <div class="modal-content glass-card">
+            <span class="close-modal" onclick="closeDoctorModal()">&times;</span>
+            <div id="doctorDetails">
+                <!-- Doctor details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Feedback Box -->
+    <div id="feedbackBox" class="feedback-box">
+        <div class="feedback-header">
+            <h4>Quick Feedback</h4>
+            <button class="close-feedback" onclick="toggleFeedbackBox()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="feedback-content">
+            <div class="rating-stars">
+                <span class="star" data-rating="1">★</span>
+                <span class="star" data-rating="2">★</span>
+                <span class="star" data-rating="3">★</span>
+                <span class="star" data-rating="4">★</span>
+                <span class="star" data-rating="5">★</span>
+            </div>
+            <textarea placeholder="Share your experience..." rows="3"></textarea>
+            <button class="btn btn-small" onclick="submitFeedback()">Submit</button>
+        </div>
+    </div>
+
+    <script src="js/doctors.js"></script>
+    <script src="js/feedback.js"></script>
+</body>
+</html>

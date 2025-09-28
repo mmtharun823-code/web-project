@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Management System - Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="dashboard-body">
+    <!-- Background Animation -->
+    <div class="background-animation">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+    </div>
+
+    <!-- Profile Sidebar -->
+    <div id="profileSidebar" class="profile-sidebar">
+        <div class="sidebar-header">
+            <div class="profile-pic">
+                <img id="profileImage" src="images/default-avatar.png" alt="Profile" onclick="changeProfilePicture()">
+                <div class="profile-pic-overlay">
+                    <i class="fas fa-camera"></i>
+                </div>
+            </div>
+            <h3 id="profileName">John Doe</h3>
+            <p id="profileEmail">john.doe@email.com</p>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="dashboard.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#" onclick="showUpdateProfile()"><i class="fas fa-user-edit"></i> Update Profile</a></li>
+                <li><a href="#" onclick="showMessages()"><i class="fas fa-envelope"></i> Messages</a></li>
+                <li><a href="#" onclick="showCalendar()"><i class="fas fa-calendar"></i> Schedule Calendar</a></li>
+                <li><a href="#" onclick="showHabits()"><i class="fas fa-heartbeat"></i> Health Habits</a></li>
+                <li><a href="#" onclick="showFeedback()"><i class="fas fa-comment"></i> Feedback</a></li>
+                <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Navigation -->
+        <div class="top-nav">
+            <button class="menu-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-right">
+                <div class="notification-bell">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-count">3</span>
+                </div>
+                <div class="profile-menu" onclick="toggleSidebar()">
+                    <img src="images/default-avatar.png" alt="Profile">
+                </div>
+            </div>
+        </div>
+
+        <!-- Welcome Section -->
+        <div class="welcome-section">
+            <h1 id="welcomeMessage">Welcome, John Doe!</h1>
+            <p class="welcome-subtitle">How can we help you today?</p>
+        </div>
+
+        <!-- Main Options Grid -->
+        <div class="options-grid">
+            <div class="option-card" onclick="navigateToHospitals()">
+                <div class="card-icon">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <h3>Hospitals</h3>
+                <p>Find nearby hospitals and medical facilities</p>
+                <div class="card-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="navigateToDoctors()">
+                <div class="card-icon">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <h3>Doctors</h3>
+                <p>Browse specialist doctors and their profiles</p>
+                <div class="card-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="navigateToAppointments()">
+                <div class="card-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h3>Appointments</h3>
+                <p>View and book your medical appointments</p>
+                <div class="card-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+
+            <div class="option-card admin-only" onclick="navigateToAdmin()" style="display: none;">
+                <div class="card-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <h3>Admin Panel</h3>
+                <p>Manage system settings and view statistics</p>
+                <div class="card-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+
+            <div class="option-card" onclick="navigateToPatientRegistration()">
+                <div class="card-icon">
+                    <i class="fas fa-clipboard-list"></i>
+                </div>
+                <h3>Book Appointment</h3>
+                <p>Register for a new appointment consultation</p>
+                <div class="card-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="stat-content">
+                    <h4>3</h4>
+                    <p>Upcoming Appointments</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <div class="stat-content">
+                    <h4>12</h4>
+                    <p>Nearby Hospitals</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <div class="stat-content">
+                    <h4>35</h4>
+                    <p>Available Doctors</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Feedback Box -->
+    <div id="feedbackBox" class="feedback-box">
+        <div class="feedback-header">
+            <h4>Quick Feedback</h4>
+            <button class="close-feedback" onclick="toggleFeedbackBox()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="feedback-content">
+            <div class="rating-stars">
+                <span class="star" data-rating="1">★</span>
+                <span class="star" data-rating="2">★</span>
+                <span class="star" data-rating="3">★</span>
+                <span class="star" data-rating="4">★</span>
+                <span class="star" data-rating="5">★</span>
+            </div>
+            <textarea placeholder="Share your experience..." rows="3"></textarea>
+            <button class="btn btn-small" onclick="submitFeedback()">Submit</button>
+        </div>
+    </div>
+
+    <!-- Modals will be dynamically added here -->
+    <div id="modalContainer"></div>
+
+    <script src="js/dashboard.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/feedback.js"></script>
+</body>
+</html>

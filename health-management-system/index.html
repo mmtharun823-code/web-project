@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Management System - Login</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="login-body">
+    <div class="background-animation">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+    </div>
+
+    <div class="login-container">
+        <div class="glass-card">
+            <div class="card-header">
+                <h1><i class="fas fa-heartbeat"></i> Health Management</h1>
+                <p>Your Health, Our Priority</p>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form active">
+                <h2>Login</h2>
+                <div class="input-group">
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="loginEmail" placeholder="Email" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="loginPassword" placeholder="Password" required>
+                    </div>
+                </div>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="rememberMe">
+                        <span class="checkmark"></span>
+                        Remember me
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+                <p class="auth-switch">
+                    Don't have an account? 
+                    <span class="switch-link" onclick="switchToRegister()">Register here</span>
+                </p>
+            </form>
+
+            <!-- Register Form -->
+            <form id="registerForm" class="auth-form">
+                <h2>Register</h2>
+                <div class="input-group">
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="registerName" placeholder="Full Name" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="registerEmail" placeholder="Email" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-field">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="registerPhone" placeholder="Phone Number" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="registerPassword" placeholder="Password" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                    </div>
+                </div>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="agreeTerms" required>
+                        <span class="checkmark"></span>
+                        I agree to the <span class="link">Terms & Conditions</span>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-user-plus"></i> Register
+                </button>
+                <p class="auth-switch">
+                    Already have an account? 
+                    <span class="switch-link" onclick="switchToLogin()">Login here</span>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Health Management System. All rights reserved.</p>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

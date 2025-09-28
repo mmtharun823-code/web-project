@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Health Management System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="admin-body">
+    <!-- Background Animation -->
+    <div class="background-animation">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="page-header">
+        <div class="header-content">
+            <button class="back-button" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1><i class="fas fa-cogs"></i> Admin Dashboard</h1>
+            <div class="header-actions">
+                <div class="admin-profile">
+                    <span>Admin Panel</span>
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <button class="home-button" onclick="goHome()">
+                    <i class="fas fa-home"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Admin Navigation -->
+    <nav class="admin-nav">
+        <ul>
+            <li><a href="#dashboard" class="nav-link active" onclick="showSection('dashboard')">
+                <i class="fas fa-tachometer-alt"></i> Dashboard
+            </a></li>
+            <li><a href="#appointments" class="nav-link" onclick="showSection('appointments')">
+                <i class="fas fa-calendar-alt"></i> Appointments
+            </a></li>
+            <li><a href="#users" class="nav-link" onclick="showSection('users')">
+                <i class="fas fa-users"></i> Users
+            </a></li>
+            <li><a href="#feedback" class="nav-link" onclick="showSection('feedback')">
+                <i class="fas fa-comments"></i> Feedback
+            </a></li>
+            <li><a href="#reports" class="nav-link" onclick="showSection('reports')">
+                <i class="fas fa-chart-bar"></i> Reports
+            </a></li>
+            <li><a href="#settings" class="nav-link" onclick="showSection('settings')">
+                <i class="fas fa-cog"></i> Settings
+            </a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="admin-content">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="admin-section active">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="totalAppointments">245</h3>
+                        <p>Today's Appointments</p>
+                        <small class="stat-change positive">+15% from yesterday</small>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="totalUsers">1,847</h3>
+                        <p>Registered Users</p>
+                        <small class="stat-change positive">+8% this week</small>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="avgRating">4.8</h3>
+                        <p>Average Rating</p>
+                        <small class="stat-change positive">+0.2 this month</small>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="totalRevenue">₹1,23,450</h3>
+                        <p>Today's Revenue</p>
+                        <small class="stat-change positive">+12% from yesterday</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-container">
+                <div class="chart-card">
+                    <h4>Appointments Overview</h4>
+                    <canvas id="appointmentsChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h4>Appointment Categories</h4>
+                    <canvas id="categoriesChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Recent Activities -->
+            <div class="recent-activities">
+                <h4>Recent Activities</h4>
+                <div class="activities-list" id="activitiesList">
+                    <!-- Activities will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Appointments Section -->
+        <section id="appointments" class="admin-section">
+            <div class="section-header">
+                <h3>Appointment Management</h3>
+                <div class="section-actions">
+                    <button class="btn btn-primary" onclick="exportAppointments()">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                </div>
+            </div>
+            
+            <div class="appointments-filters">
+                <select id="statusFilter">
+                    <option value="all">All Status</option>
+                    <option value="scheduled">Scheduled</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                </select>
+                <select id="dateFilter">
+                    <option value="today">Today</option>
+                    <option value="week">This Week</option>
+                    <option value="month">This Month</option>
+                </select>
+                <input type="text" id="appointmentSearch" placeholder="Search appointments...">
+            </div>
+
+            <div class="appointments-table-container">
+                <table class="admin-table" id="appointmentsTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Patient</th>
+                            <th>Doctor</th>
+                            <th>Date & Time</th>
+                            <th>Category</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be loaded dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Users Section -->
+        <section id="users" class="admin-section">
+            <div class="section-header">
+                <h3>User Management</h3>
+                <div class="section-actions">
+                    <button class="btn btn-primary" onclick="exportUsers()">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                </div>
+            </div>
+
+            <div class="users-stats">
+                <div class="user-stat">
+                    <span class="count">1,245</span>
+                    <span class="label">Total Patients</span>
+                </div>
+                <div class="user-stat">
+                    <span class="count">35</span>
+                    <span class="label">Active Doctors</span>
+                </div>
+                <div class="user-stat">
+                    <span class="count">8</span>
+                    <span class="label">Admin Users</span>
+                </div>
+            </div>
+
+            <div class="users-table-container">
+                <table class="admin-table" id="usersTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Registration Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be loaded dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Feedback Section -->
+        <section id="feedback" class="admin-section">
+            <div class="section-header">
+                <h3>Customer Feedback</h3>
+                <div class="feedback-summary">
+                    <div class="rating-overview">
+                        <span class="avg-rating">4.8</span>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="total-reviews">(1,247 reviews)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feedback-filters">
+                <select id="ratingFilter">
+                    <option value="all">All Ratings</option>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <select id="feedbackDateFilter">
+                    <option value="all">All Time</option>
+                    <option value="today">Today</option>
+                    <option value="week">This Week</option>
+                    <option value="month">This Month</option>
+                </select>
+            </div>
+
+            <div class="feedback-list" id="feedbackList">
+                <!-- Feedback items will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- Reports Section -->
+        <section id="reports" class="admin-section">
+            <div class="section-header">
+                <h3>Reports & Analytics</h3>
+            </div>
+
+            <div class="reports-grid">
+                <div class="report-card" onclick="generateReport('appointments')">
+                    <div class="report-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h4>Appointments Report</h4>
+                    <p>Detailed appointment statistics and trends</p>
+                </div>
+                <div class="report-card" onclick="generateReport('revenue')">
+                    <div class="report-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4>Revenue Report</h4>
+                    <p>Financial performance and payment analytics</p>
+                </div>
+                <div class="report-card" onclick="generateReport('doctors')">
+                    <div class="report-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h4>Doctor Performance</h4>
+                    <p>Doctor ratings, appointments, and availability</p>
+                </div>
+                <div class="report-card" onclick="generateReport('patients')">
+                    <div class="report-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Patient Analytics</h4>
+                    <p>Patient demographics and behavior analysis</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Settings Section -->
+        <section id="settings" class="admin-section">
+            <div class="section-header">
+                <h3>System Settings</h3>
+            </div>
+
+            <div class="settings-groups">
+                <div class="setting-group">
+                    <h4>General Settings</h4>
+                    <div class="setting-item">
+                        <label>System Name</label>
+                        <input type="text" value="Health Management System">
+                    </div>
+                    <div class="setting-item">
+                        <label>Default Appointment Duration</label>
+                        <select>
+                            <option value="30">30 minutes</option>
+                            <option value="45">45 minutes</option>
+                            <option value="60">60 minutes</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <h4>Notification Settings</h4>
+                    <div class="setting-item">
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                            Email Notifications
+                        </label>
+                    </div>
+                    <div class="setting-item">
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                            SMS Notifications
+                        </label>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <h4>Payment Settings</h4>
+                    <div class="setting-item">
+                        <label>Consultation Fee</label>
+                        <input type="number" value="500" min="0">
+                    </div>
+                    <div class="setting-item">
+                        <label>Cancellation Fee</label>
+                        <input type="number" value="100" min="0">
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-actions">
+                <button class="btn btn-primary" onclick="saveSettings()">
+                    <i class="fas fa-save"></i> Save Settings
+                </button>
+                <button class="btn btn-secondary" onclick="resetSettings()">
+                    <i class="fas fa-undo"></i> Reset to Default
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Floating Feedback Box -->
+    <div id="feedbackBox" class="feedback-box">
+        <div class="feedback-header">
+            <h4>Quick Feedback</h4>
+            <button class="close-feedback" onclick="toggleFeedbackBox()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="feedback-content">
+            <div class="rating-stars">
+                <span class="star" data-rating="1">★</span>
+                <span class="star" data-rating="2">★</span>
+                <span class="star" data-rating="3">★</span>
+                <span class="star" data-rating="4">★</span>
+                <span class="star" data-rating="5">★</span>
+            </div>
+            <textarea placeholder="Share your experience..." rows="3"></textarea>
+            <button class="btn btn-small" onclick="submitFeedback()">Submit</button>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+    <script src="js/feedback.js"></script>
+</body>
+</html>

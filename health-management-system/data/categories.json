@@ -1,0 +1,304 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "General Consultation",
+      "description": "General health checkup and consultation with a physician",
+      "icon": "fa-stethoscope",
+      "price": 300,
+      "duration": 30,
+      "specialty": "general",
+      "color": "#3b82f6"
+    },
+    {
+      "id": 2,
+      "name": "Emergency Consultation",
+      "description": "Urgent medical attention for immediate health concerns",
+      "icon": "fa-ambulance",
+      "price": 500,
+      "duration": 45,
+      "specialty": "emergency",
+      "color": "#ef4444"
+    },
+    {
+      "id": 3,
+      "name": "Cardiology Consultation",
+      "description": "Heart-related health issues and cardiovascular assessment",
+      "icon": "fa-heartbeat",
+      "price": 800,
+      "duration": 45,
+      "specialty": "cardiology",
+      "color": "#dc2626"
+    },
+    {
+      "id": 4,
+      "name": "Neurology Consultation",
+      "description": "Brain, nerve, and neurological disorder consultations",
+      "icon": "fa-brain",
+      "price": 750,
+      "duration": 45,
+      "specialty": "neurology",
+      "color": "#7c3aed"
+    },
+    {
+      "id": 5,
+      "name": "Orthopedic Consultation",
+      "description": "Bone, joint, muscle, and skeletal system evaluation",
+      "icon": "fa-bone",
+      "price": 650,
+      "duration": 40,
+      "specialty": "orthopedics",
+      "color": "#059669"
+    },
+    {
+      "id": 6,
+      "name": "ENT Consultation",
+      "description": "Ear, Nose, and Throat related problems and treatments",
+      "icon": "fa-head-side-mask",
+      "price": 500,
+      "duration": 35,
+      "specialty": "ent",
+      "color": "#0891b2"
+    },
+    {
+      "id": 7,
+      "name": "Oncology Consultation",
+      "description": "Cancer screening, treatment, and follow-up consultations",
+      "icon": "fa-ribbon",
+      "price": 1200,
+      "duration": 60,
+      "specialty": "oncology",
+      "color": "#dc2626"
+    },
+    {
+      "id": 8,
+      "name": "Dermatology Consultation",
+      "description": "Skin, hair, and nail related problems and treatments",
+      "icon": "fa-hand-sparkles",
+      "price": 450,
+      "duration": 30,
+      "specialty": "dermatology",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 9,
+      "name": "Pediatric Consultation",
+      "description": "Child health checkup and pediatric medical care",
+      "icon": "fa-baby",
+      "price": 600,
+      "duration": 40,
+      "specialty": "pediatrics",
+      "color": "#10b981"
+    },
+    {
+      "id": 10,
+      "name": "Psychiatry Consultation",
+      "description": "Mental health assessment and psychological counseling",
+      "icon": "fa-brain",
+      "price": 700,
+      "duration": 50,
+      "specialty": "psychiatry",
+      "color": "#8b5cf6"
+    },
+    {
+      "id": 11,
+      "name": "Gynecology Consultation",
+      "description": "Women's health, reproductive system, and prenatal care",
+      "icon": "fa-venus",
+      "price": 500,
+      "duration": 35,
+      "specialty": "gynecology",
+      "color": "#ec4899"
+    },
+    {
+      "id": 12,
+      "name": "Ophthalmology Consultation",
+      "description": "Eye examination, vision problems, and eye diseases",
+      "icon": "fa-eye",
+      "price": 450,
+      "duration": 30,
+      "specialty": "ophthalmology",
+      "color": "#06b6d4"
+    },
+    {
+      "id": 13,
+      "name": "Gastroenterology Consultation",
+      "description": "Digestive system disorders and gastrointestinal problems",
+      "icon": "fa-stomach",
+      "price": 550,
+      "duration": 40,
+      "specialty": "gastroenterology",
+      "color": "#84cc16"
+    },
+    {
+      "id": 14,
+      "name": "Urology Consultation",
+      "description": "Urinary tract and male reproductive system issues",
+      "icon": "fa-kidneys",
+      "price": 600,
+      "duration": 35,
+      "specialty": "urology",
+      "color": "#3b82f6"
+    },
+    {
+      "id": 15,
+      "name": "Endocrinology Consultation",
+      "description": "Hormone disorders, diabetes, and metabolic conditions",
+      "icon": "fa-dna",
+      "price": 650,
+      "duration": 45,
+      "specialty": "endocrinology",
+      "color": "#f97316"
+    },
+    {
+      "id": 16,
+      "name": "Pulmonology Consultation",
+      "description": "Lung, breathing, and respiratory system problems",
+      "icon": "fa-lungs",
+      "price": 550,
+      "duration": 40,
+      "specialty": "pulmonology",
+      "color": "#06b6d4"
+    },
+    {
+      "id": 17,
+      "name": "Nephrology Consultation",
+      "description": "Kidney diseases and renal system disorders",
+      "icon": "fa-kidneys",
+      "price": 700,
+      "duration": 45,
+      "specialty": "nephrology",
+      "color": "#0891b2"
+    },
+    {
+      "id": 18,
+      "name": "Rheumatology Consultation",
+      "description": "Arthritis, autoimmune diseases, and joint disorders",
+      "icon": "fa-hand-fist",
+      "price": 500,
+      "duration": 40,
+      "specialty": "rheumatology",
+      "color": "#dc2626"
+    },
+    {
+      "id": 19,
+      "name": "Plastic Surgery Consultation",
+      "description": "Reconstructive and cosmetic surgery consultations",
+      "icon": "fa-magic",
+      "price": 800,
+      "duration": 45,
+      "specialty": "plastic_surgery",
+      "color": "#ec4899"
+    },
+    {
+      "id": 20,
+      "name": "Radiology Consultation",
+      "description": "Medical imaging interpretation and diagnostic consultation",
+      "icon": "fa-x-ray",
+      "price": 400,
+      "duration": 30,
+      "specialty": "radiology",
+      "color": "#6b7280"
+    },
+    {
+      "id": 21,
+      "name": "Hematology Consultation",
+      "description": "Blood disorders, anemia, and blood cancer consultations",
+      "icon": "fa-tint",
+      "price": 750,
+      "duration": 45,
+      "specialty": "hematology",
+      "color": "#dc2626"
+    },
+    {
+      "id": 22,
+      "name": "Anesthesiology Consultation",
+      "description": "Pre-operative assessment and pain management consultation",
+      "icon": "fa-syringe",
+      "price": 400,
+      "duration": 30,
+      "specialty": "anesthesiology",
+      "color": "#6366f1"
+    },
+    {
+      "id": 23,
+      "name": "Geriatrics Consultation",
+      "description": "Elderly care and age-related health problems",
+      "icon": "fa-walking-cane",
+      "price": 600,
+      "duration": 45,
+      "specialty": "geriatrics",
+      "color": "#059669"
+    },
+    {
+      "id": 24,
+      "name": "Infectious Diseases Consultation",
+      "description": "Bacterial, viral, and other infectious disease treatment",
+      "icon": "fa-virus",
+      "price": 500,
+      "duration": 40,
+      "specialty": "infectious_diseases",
+      "color": "#dc2626"
+    },
+    {
+      "id": 25,
+      "name": "Sports Medicine Consultation",
+      "description": "Sports injuries, rehabilitation, and performance optimization",
+      "icon": "fa-running",
+      "price": 550,
+      "duration": 40,
+      "specialty": "sports_medicine",
+      "color": "#22c55e"
+    },
+    {
+      "id": 26,
+      "name": "Nuclear Medicine Consultation",
+      "description": "Nuclear imaging and therapeutic nuclear medicine",
+      "icon": "fa-atom",
+      "price": 450,
+      "duration": 35,
+      "specialty": "nuclear_medicine",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 27,
+      "name": "Master Health Checkup",
+      "description": "Comprehensive full body health screening and evaluation",
+      "icon": "fa-clipboard-check",
+      "price": 2500,
+      "duration": 120,
+      "specialty": "general",
+      "color": "#3b82f6"
+    },
+    {
+      "id": 28,
+      "name": "Severe Fever Treatment",
+      "description": "High fever evaluation and treatment consultation",
+      "icon": "fa-thermometer-full",
+      "price": 400,
+      "duration": 30,
+      "specialty": "general",
+      "color": "#ef4444"
+    },
+    {
+      "id": 29,
+      "name": "Madras Eye Treatment",
+      "description": "Conjunctivitis and red eye infection treatment",
+      "icon": "fa-eye-slash",
+      "price": 300,
+      "duration": 25,
+      "specialty": "ophthalmology",
+      "color": "#dc2626"
+    },
+    {
+      "id": 30,
+      "name": "Acrology Consultation",
+      "description": "Hand and foot disorders, extremity problems",
+      "icon": "fa-hand-paper",
+      "price": 450,
+      "duration": 35,
+      "specialty": "orthopedics",
+      "color": "#059669"
+    }
+  ]
+}

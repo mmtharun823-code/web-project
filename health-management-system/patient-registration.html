@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment - Health Management System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="patient-registration-body">
+    <!-- Background Animation -->
+    <div class="background-animation">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="page-header">
+        <div class="header-content">
+            <button class="back-button" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1><i class="fas fa-clipboard-list"></i> Book Appointment</h1>
+            <div class="header-actions">
+                <button class="home-button" onclick="goHome()">
+                    <i class="fas fa-home"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Progress Indicator -->
+    <div class="progress-indicator">
+        <div class="step active" data-step="1">
+            <div class="step-number">1</div>
+            <div class="step-label">Category</div>
+        </div>
+        <div class="step" data-step="2">
+            <div class="step-number">2</div>
+            <div class="step-label">Details</div>
+        </div>
+        <div class="step" data-step="3">
+            <div class="step-number">3</div>
+            <div class="step-label">Schedule</div>
+        </div>
+        <div class="step" data-step="4">
+            <div class="step-number">4</div>
+            <div class="step-label">Payment</div>
+        </div>
+        <div class="step" data-step="5">
+            <div class="step-number">5</div>
+            <div class="step-label">Confirmation</div>
+        </div>
+    </div>
+
+    <!-- Form Container -->
+    <div class="form-container">
+        <!-- Step 1: Category Selection -->
+        <div id="step1" class="form-step active">
+            <div class="step-header">
+                <h2>Select Appointment Category</h2>
+                <p>Choose the type of consultation you need</p>
+            </div>
+            <div class="category-grid" id="categoryGrid">
+                <!-- Categories will be loaded dynamically -->
+            </div>
+        </div>
+
+        <!-- Step 2: Patient Details -->
+        <div id="step2" class="form-step">
+            <div class="step-header">
+                <h2>Patient Information</h2>
+                <p>Please provide your details for the appointment</p>
+            </div>
+            <form id="patientDetailsForm" class="glass-form">
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="patientName">Full Name *</label>
+                        <input type="text" id="patientName" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="patientAge">Age *</label>
+                        <input type="number" id="patientAge" min="1" max="120" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="patientGender">Gender *</label>
+                        <select id="patientGender" required>
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="patientPhone">Phone Number *</label>
+                        <input type="tel" id="patientPhone" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-group full-width">
+                        <label for="patientEmail">Email Address *</label>
+                        <input type="email" id="patientEmail" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-group full-width">
+                        <label for="patientAddress">Address</label>
+                        <textarea id="patientAddress" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-group full-width">
+                        <label for="symptoms">Symptoms / Reason for Visit *</label>
+                        <textarea id="symptoms" rows="4" placeholder="Describe your symptoms or reason for consultation..." required></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Step 3: Schedule Selection -->
+        <div id="step3" class="form-step">
+            <div class="step-header">
+                <h2>Select Date & Time</h2>
+                <p>Choose your preferred appointment slot</p>
+            </div>
+            <div class="schedule-container">
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button class="nav-btn" id="prevMonth">&lt;</button>
+                        <h3 id="currentMonth">January 2024</h3>
+                        <button class="nav-btn" id="nextMonth">&gt;</button>
+                    </div>
+                    <div class="calendar" id="calendar">
+                        <!-- Calendar will be generated dynamically -->
+                    </div>
+                </div>
+                <div class="time-slots-container">
+                    <h4>Available Time Slots</h4>
+                    <div class="time-slots" id="timeSlots">
+                        <!-- Time slots will be loaded based on selected date -->
+                    </div>
+                </div>
+            </div>
+            <div class="selected-info" id="selectedInfo" style="display: none;">
+                <div class="info-card">
+                    <h4>Selected Appointment</h4>
+                    <p><strong>Date:</strong> <span id="selectedDate"></span></p>
+                    <p><strong>Time:</strong> <span id="selectedTime"></span></p>
+                    <p><strong>Doctor:</strong> <span id="selectedDoctor"></span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4: Payment -->
+        <div id="step4" class="form-step">
+            <div class="step-header">
+                <h2>Payment Information</h2>
+                <p>Complete your payment to confirm the appointment</p>
+            </div>
+            <div class="payment-container">
+                <div class="appointment-summary">
+                    <h4>Appointment Summary</h4>
+                    <div class="summary-item">
+                        <span>Category:</span>
+                        <span id="summaryCategory"></span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Date & Time:</span>
+                        <span id="summaryDateTime"></span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Doctor:</span>
+                        <span id="summaryDoctor"></span>
+                    </div>
+                    <div class="summary-item total">
+                        <span>Total Amount:</span>
+                        <span id="totalAmount">₹500</span>
+                    </div>
+                </div>
+                
+                <div class="payment-methods">
+                    <h4>Payment Method</h4>
+                    <div class="payment-options">
+                        <label class="payment-option">
+                            <input type="radio" name="paymentMethod" value="card" checked>
+                            <div class="option-content">
+                                <i class="fas fa-credit-card"></i>
+                                <span>Credit/Debit Card</span>
+                            </div>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="paymentMethod" value="upi">
+                            <div class="option-content">
+                                <i class="fab fa-google-pay"></i>
+                                <span>UPI/Digital Wallet</span>
+                            </div>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="paymentMethod" value="netbanking">
+                            <div class="option-content">
+                                <i class="fas fa-university"></i>
+                                <span>Net Banking</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="payment-form" id="paymentForm">
+                    <!-- Payment form fields will be loaded based on selected method -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 5: Confirmation -->
+        <div id="step5" class="form-step">
+            <div class="confirmation-container">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Appointment Confirmed!</h2>
+                <p>Your appointment has been successfully booked.</p>
+                
+                <div class="confirmation-details">
+                    <div class="detail-item">
+                        <span class="label">Appointment ID:</span>
+                        <span class="value" id="appointmentId">#APT001234</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Date & Time:</span>
+                        <span class="value" id="confirmationDateTime"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Doctor:</span>
+                        <span class="value" id="confirmationDoctor"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="label">Location:</span>
+                        <span class="value" id="confirmationLocation"></span>
+                    </div>
+                </div>
+
+                <div class="confirmation-actions">
+                    <button class="btn btn-secondary" onclick="downloadReceipt()">
+                        <i class="fas fa-download"></i> Download Receipt
+                    </button>
+                    <button class="btn btn-primary" onclick="goToAppointments()">
+                        <i class="fas fa-calendar"></i> View My Appointments
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="form-navigation">
+            <button id="prevBtn" class="btn btn-secondary" onclick="previousStep()" style="display: none;">
+                <i class="fas fa-arrow-left"></i> Previous
+            </button>
+            <button id="nextBtn" class="btn btn-primary" onclick="nextStep()">
+                Next <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Floating Feedback Box -->
+    <div id="feedbackBox" class="feedback-box">
+        <div class="feedback-header">
+            <h4>Quick Feedback</h4>
+            <button class="close-feedback" onclick="toggleFeedbackBox()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="feedback-content">
+            <div class="rating-stars">
+                <span class="star" data-rating="1">★</span>
+                <span class="star" data-rating="2">★</span>
+                <span class="star" data-rating="3">★</span>
+                <span class="star" data-rating="4">★</span>
+                <span class="star" data-rating="5">★</span>
+            </div>
+            <textarea placeholder="Share your experience..." rows="3"></textarea>
+            <button class="btn btn-small" onclick="submitFeedback()">Submit</button>
+        </div>
+    </div>
+
+    <script src="js/patient-registration.js"></script>
+    <script src="js/feedback.js"></script>
+</body>
+</html>
